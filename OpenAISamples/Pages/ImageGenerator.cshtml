@@ -1,0 +1,45 @@
+﻿@page
+@model ImageGenerator
+@{
+    ViewData["Title"] = "Gerador de Nome De Empresas";
+}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Gerador de Nomes de Empresas</h4>
+                    <form method="post">
+                        <div class="mb-3">
+                            <label for="Caracteristicas" class="form-label">Características</label>
+                            <input type="text" class="form-control" id="Cargo" name="Caracteristicas" value="@Model.Caracteristicas" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Gerar</button>
+                    </form>
+                    <hr/>
+                    <ul>
+                        @foreach (var nome in Model.NomesSugeridos)
+                        {
+                            <li>@nome</li>
+                        }
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Logotipos</h4>
+                    @foreach (var logo in Model.Logotipos)
+                    {
+                        <div class="col-md-3 p-10" style="padding-top:10px">
+                            <img class="p-10" src="@logo" alt="@logo"/>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

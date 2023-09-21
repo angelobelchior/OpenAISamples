@@ -1,0 +1,50 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Gerador de Vagas";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Dados da Vaga</h4>
+                    <form method="post">
+                        <div class="mb-3">
+                            <label for="Cargo" class="form-label">Cargo</label>
+                            <input type="text" class="form-control" id="Cargo" name="Cargo" value="@Model.Cargo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Conhecimentos" class="form-label">Tecnologias</label>
+                            <input type="text" class="form-control" id="Conhecimentos" name="Conhecimentos" value="@Model.Conhecimentos" rows="3" required/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="FaixaSalarial" class="form-label">Faixa Salarial</label>
+                            <input type="text" class="form-control" id="FaixaSalarial" name="FaixaSalarial" value="@Model.FaixaSalarial" rows="3" required/>
+                        </div>
+                        <div class="mb-3">
+                            <label for="FormaDeContratacao" class="form-label">Forma de Contratação</label>
+                            <input type="text" class="form-control" id="FormaDeContratacao" name="FormaDeContratacao" value="@Model.FormaDeContratacao" rows="3" required/>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Gerar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Descrição da Vaga</h4>
+                    @if (!string.IsNullOrEmpty(Model.Resposta))
+                    {
+                        <div id="response">
+                            @Html.Raw(Model.Resposta)
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
